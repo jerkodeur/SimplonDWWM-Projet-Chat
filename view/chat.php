@@ -1,5 +1,3 @@
-<?php include('model/message.php') ?>
-
 <div class="row table-active border-white mt-3">
     <div class="col-lg-12">
         <div class="page-header">
