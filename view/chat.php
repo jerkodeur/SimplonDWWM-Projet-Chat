@@ -18,13 +18,11 @@
                 <tbody>
                     <?php
                     $messages = findAll();
-                    var_dump($messages);
-                    die();
                     foreach ($messages as $message) { ?>
                         <tr class="table-light">
                             <td class="col-2"><?= $message['date'] ?></td>
                             <td class="col-2"><?= $message['pseudo'] ?></td>
-                            <td class="col-8"><?= $message['message'] ?></td>
+                            <td class="col-8"><?= $message['content'] ?></td>
                         </tr>
                     <?php
                     }

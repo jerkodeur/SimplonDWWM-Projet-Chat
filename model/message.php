@@ -3,6 +3,7 @@
 function findAll()
 {
     include('connexion.php');
+
     try {
         $dbh = getConnexion();
         $query = $dbh->prepare('SELECT * FROM message');
