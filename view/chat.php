@@ -17,7 +17,9 @@
                 </thead>
                 <tbody>
                     <?php
-                    $messages = getMessages();
+                    $messages = findAll();
+                    var_dump($messages);
+                    die();
                     foreach ($messages as $message) { ?>
                         <tr class="table-light">
                             <td class="col-2"><?= $message['date'] ?></td>
