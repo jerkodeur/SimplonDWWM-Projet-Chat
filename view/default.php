@@ -14,6 +14,7 @@
 <body>
     <div class="container">
         <?php include('chat.php') ?>
+        <?php include('form.php') ?>
     </div>
 </body>
 

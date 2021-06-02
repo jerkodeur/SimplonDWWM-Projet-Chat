@@ -10,9 +10,9 @@
             <table class="table">
                 <thead>
                     <tr class="table-light text-dark">
-                        <th scope="col">Date</th>
-                        <th scope="col">Pseudo</th>
-                        <th scope="col">Message</th>
+                        <th scope="col" class="col-2">Date</th>
+                        <th scope="col" class="col-2">Pseudo</th>
+                        <th scope="col" class="col-8">Message</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -20,9 +20,9 @@
                     $messages = getMessages();
                     foreach ($messages as $message) { ?>
                         <tr class="table-light">
-                            <td><?= $message['date'] ?></td>
-                            <td><?= $message['pseudo'] ?></td>
-                            <td><?= $message['message'] ?></td>
+                            <td class="col-2"><?= $message['date'] ?></td>
+                            <td class="col-2"><?= $message['pseudo'] ?></td>
+                            <td class="col-8"><?= $message['message'] ?></td>
                         </tr>
                     <?php
                     }
