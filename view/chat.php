@@ -1,6 +1,6 @@
 <?php include('model/message.php') ?>
 
-<div class="row table-active border-white w-75 m-auto mt-3">
+<div class="row table-active border-white mt-3">
     <div class="col-lg-12">
         <div class="page-header">
             <h1 id="tables">Live chat Amazin</h1>

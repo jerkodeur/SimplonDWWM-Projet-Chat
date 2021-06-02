@@ -12,7 +12,9 @@
 </head>
 
 <body>
-    <?php include('chat.php') ?>
+    <div class="container">
+        <?php include('chat.php') ?>
+    </div>
 </body>
 
 </html>
