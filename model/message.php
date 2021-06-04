@@ -1,6 +1,6 @@
 <?php
 
-function findAll()
+function findAll(): array
 {
     include('connexion.php');
 
@@ -19,7 +19,7 @@ function findAll()
     }
 }
 
-function newMessage(array $post)
+function newMessage(array $post): void
 {
     include('connexion.php');
 
