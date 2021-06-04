@@ -1,9 +1,10 @@
 <?php
 $form_error = [];
 
-if (!isset($_POST['pseudo'])) $form_error['pseudo'] = 'empty';
+if ($_POST['pseudo'] === '') $form_error['pseudo'] = 'empty';
 
-if (!isset($_POST['message'])) $form_error['message'] = 'empty';
+if ($_POST['message'] === '') $form_error['message'] = 'empty';
+
 
 if ($form_error === []) {
     newMessage($_POST);
