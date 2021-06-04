@@ -8,6 +8,7 @@
             <table class="table">
                 <thead>
                     <tr class="table-light text-dark">
+                        <th scope="col"></th>
                         <th scope="col" class="col-2">Date</th>
                         <th scope="col" class="col-2">Pseudo</th>
                         <th scope="col" class="col-8">Message</th>
@@ -19,7 +20,8 @@
                     foreach ($messages as $message) {
                     ?>
                         <tr class="table-light">
-                            <td class="col-2"><?= formatChatDate($message['date']) ?></td>
+                            <td><a href="?d=<?= $message['id'] ?>"><button type="button" class="btn btn-outline-dark rounded-circle">X</button></a></td>
+                            <td class="col-2"><?php echo formatChatDate($message['date']) ?></td>
                             <td class="col-2"><?= htmlentities($message['pseudo']) ?></td>
                             <td class="col-8"><?= nl2br(htmlentities($message['content'])) ?></td>
                         </tr>

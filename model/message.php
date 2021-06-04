@@ -36,3 +36,20 @@ function newMessage(array $post): void
         die();
     }
 }
+
+function deleteOne(int $id)
+{
+    include('connexion.php');
+
+    try {
+        $dbh = getConnexion();
+        $query = $dbh->prepare("DELETE FROM message WHERE id=:id ");
+        $query->bindParam(':id', $id);
+        $query->execute();
+        $query->closeCursor();
+        $db = null;
+    } catch (PDOException $e) {
+        print "Erreur lors de l'insertion d'un message'!: " . $e->getMessage() . "<br />";
+        die();
+    }
+}
