@@ -16,5 +16,5 @@ if ($form_error === []) {
         newMessage($_POST);
     }
     $_POST = [];
-    header('Location: index.php');
+    header('Location: index.php#bottom');
 }

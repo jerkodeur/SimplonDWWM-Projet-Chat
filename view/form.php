@@ -1,5 +1,5 @@
 <div class="row">
-    <form action="index.php#form" method="post">
+    <form action="index.php#bottom" method="post">
         <div class="row">
             <div class="col-5 form-group">
                 <input type="text" class="form-control" id="pseudo" name="pseudo" id="pseudo" placeholder="Entrer votre pseudo" value=<?php if (isset($_POST['pseudo']))  echo $_POST['pseudo'] ?>>
@@ -17,8 +17,12 @@
         <div class="row">
             <div class="col-12 form-group">
                 <button class="btn btn-primary mb-3" type="submit">Envoyer</button>
-                <span id="form"></span>
             </div>
         </div>
+        <?php
+        if (isset($form_error) && $form_error['general'] === 'empty') { ?>
+            <div class="alert alert-dismissible alert-danger">Le message n'a pu être modifié, car le champ était vide !</div>
+        <?php } ?>
+        <span id="bottom"></span>
     </form>
 </div>

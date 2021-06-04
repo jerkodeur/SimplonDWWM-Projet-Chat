@@ -6,7 +6,7 @@ if ($_POST) {
     include('service/verif_form.php');
 } elseif (isset($_GET['d'])) {
     deleteOne($_GET['d']);
-    header('Location: index.php');
+    header('Location: index.php#bottom');
 }
 
 include('view/default.php');
