@@ -23,7 +23,10 @@
                             <td><a href="?d=<?= $message['id'] ?>"><button type="button" class="btn btn-outline-dark rounded-circle">X</button></a></td>
                             <td class="col-2"><?php echo formatChatDate($message['date']) ?></td>
                             <td class="col-2"><?= htmlentities($message['pseudo']) ?></td>
-                            <td class="col-8"><?= nl2br(htmlentities($message['content'])) ?></td>
+                            <td class="col-8">
+                                <div><?= nl2br(htmlentities($message['content'])) ?></div>
+                                <div class="text-right"><a class="custom-link" href="m=<?= $message['id'] ?>"><small>Modifier</small></a></div>
+                            </td>
                         </tr>
                     <?php
                     }

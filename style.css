@@ -1,3 +1,13 @@
 .invalid-feedback {
   display: block;
 }
+
+.text-right {
+  text-align: right;
+}
+
+.custom-link:active,
+.custom-link:visited,
+.custom-link {
+  color: rgb(22, 90, 75);
+}
