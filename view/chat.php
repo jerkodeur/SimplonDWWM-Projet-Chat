@@ -24,8 +24,21 @@
                             <td class="col-2"><?php echo formatChatDate($message['date']) ?></td>
                             <td class="col-2"><?= htmlentities($message['pseudo']) ?></td>
                             <td class="col-8">
-                                <div><?= nl2br(htmlentities($message['content'])) ?></div>
-                                <div class="text-right"><a class="custom-link" href="m=<?= $message['id'] ?>"><small>Modifier</small></a></div>
+                                <div>
+                                    <?php if (isset($_GET) && $_GET['m'] == $message['id']) { ?>
+                                        <input type="text" class="form-control" id=<?= "m_" . $message['id'] ?> name=<?= "m_" . $message['id'] ?> value=<?= $message['content'] ?>>
+                                    <?php    } else {
+                                        echo nl2br(htmlentities($message['content']));
+                                    } ?>
+                                </div>
+                                <div class="text-right">
+                                    <?php if (isset($_GET) && $_GET['m'] == $message['id']) { ?>
+                                        <a class="custom-link" href=<?= $_SERVER["HTTP_REFERER"] ?>><small>Annuler</small></a>&nbsp;-&nbsp;
+                                        <a class="custom-link" href=<?= "?update=" . $message['id'] ?>><small>Remplacer le message</small></a>
+                                    <?php    } else { ?>
+                                        <a class="custom-link" href=<?= "?m=" . $message['id'] ?>><small>Modifier</small></a>
+                                    <?php } ?>
+                                </div>
                             </td>
                         </tr>
                     <?php
