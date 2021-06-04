@@ -6,13 +6,13 @@ function findAll(): array
 
     try {
         $dbh = getConnexion();
-        $query = $dbh->prepare('SELECT * FROM message ORDER BY date DESC LIMIT 10');
+        $query = $dbh->prepare('SELECT * FROM message ORDER BY date DESC LIMIT 15');
         $query->execute();
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $result = $query->fetchAll();
         $query->closeCursor();
         $db = null;
-        return $result;
+        return array_reverse($result);
     } catch (PDOException $e) {
         print "Erreur lors de la récupération des messages!: " . $e->getMessage() . "<br />";
         die();

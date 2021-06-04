@@ -1,5 +1,5 @@
 <div class="row">
-    <form action="index.php" method="post">
+    <form action="index.php#form" method="post">
         <div class="row">
             <div class="col-5 form-group">
                 <input type="text" class="form-control" id="pseudo" name="pseudo" id="pseudo" placeholder="Entrer votre pseudo" value=<?php if (isset($_POST['pseudo']))  echo $_POST['pseudo'] ?>>
@@ -16,7 +16,8 @@
         </div>
         <div class="row">
             <div class="col-12 form-group">
-                <button class="btn btn-primary" type="submit">Envoyer</button>
+                <button class="btn btn-primary mb-3" type="submit">Envoyer</button>
+                <span id="form"></span>
             </div>
         </div>
     </form>
