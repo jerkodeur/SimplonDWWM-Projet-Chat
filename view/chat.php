@@ -5,47 +5,53 @@
         </div>
 
         <div class="bs-component">
-            <table class="table">
-                <thead>
-                    <tr class="table-light text-dark">
-                        <th scope="col"></th>
-                        <th scope="col" class="col-2">Date</th>
-                        <th scope="col" class="col-2">Pseudo</th>
-                        <th scope="col" class="col-8">Message</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $messages = findAll();
-                    foreach ($messages as $message) {
-                    ?>
-                        <tr class="table-light">
-                            <td><a href="?d=<?= $message['id'] ?>"><button type="button" class="btn btn-outline-dark rounded-circle">X</button></a></td>
-                            <td class="col-2"><?php echo formatChatDate($message['date']) ?></td>
-                            <td class="col-2"><?= htmlentities($message['pseudo']) ?></td>
-                            <td class="col-8">
-                                <div>
-                                    <?php if (isset($_GET) && $_GET['m'] == $message['id']) { ?>
-                                        <input type="text" class="form-control" id=<?= "m_" . $message['id'] ?> name=<?= "m_" . $message['id'] ?> value=<?= $message['content'] ?>>
-                                    <?php    } else {
-                                        echo nl2br(htmlentities($message['content']));
-                                    } ?>
-                                </div>
-                                <div class="text-right">
-                                    <?php if (isset($_GET) && $_GET['m'] == $message['id']) { ?>
-                                        <a class="custom-link" href=<?= $_SERVER["HTTP_REFERER"] ?>><small>Annuler</small></a>&nbsp;-&nbsp;
-                                        <a class="custom-link" href=<?= "?update=" . $message['id'] ?>><small>Remplacer le message</small></a>
-                                    <?php    } else { ?>
-                                        <a class="custom-link" href=<?= "?m=" . $message['id'] ?>><small>Modifier</small></a>
-                                    <?php } ?>
-                                </div>
-                            </td>
+            <form name="update_mess" action="index.php" method="POST">
+                <table class="table">
+                    <thead>
+                        <tr class="table-light text-dark">
+                            <th scope="col"></th>
+                            <th scope="col" class="col-2">Date</th>
+                            <th scope="col" class="col-2">Pseudo</th>
+                            <th scope="col" class="col-8">Message</th>
                         </tr>
-                    <?php
-                    }
-                    ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $messages = findAll();
+                        foreach ($messages as $message) {
+                        ?>
+                            <input type="hidden" name="pseudo" value=<?= $message['pseudo'] ?> />
+                            <input type="hidden" name="id" value=<?= $message['id'] ?> />
+                            <input type="hidden" name="update" />
+
+                            <tr class="table-light">
+                                <td><a href="?d=<?= $message['id'] ?>"><button type="button" class="btn btn-outline-dark rounded-circle">X</button></a></td>
+                                <td class="col-2"><?php echo formatChatDate($message['date']) ?></td>
+                                <td class="col-2"><?= htmlentities($message['pseudo']) ?></td>
+                                <td class="col-8">
+                                    <div>
+                                        <?php if (isset($_GET) && $_GET['m'] == $message['id']) { ?>
+                                            <textarea rows="3" class="form-control" name="message"><?= htmlspecialchars($message['content']) ?></textarea>
+                                        <?php    } else {
+                                            echo nl2br(htmlentities($message['content']));
+                                        } ?>
+                                    </div>
+                                    <div class="text-right">
+                                        <?php if (isset($_GET) && $_GET['m'] == $message['id']) { ?>
+                                            <a class="custom-link" href=<?= $_SERVER["HTTP_REFERER"] ?>><small>Annuler</small></a>&nbsp;-&nbsp;
+                                            <a class="custom-link" href="#" onclick="document.forms['update_mess'].submit();"><small>Remplacer le message</small></a>
+                                        <?php    } else { ?>
+                                            <a class="custom-link" href=<?= "?m=" . $message['id'] ?>><small>Modifier</small></a>
+                                        <?php } ?>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </form>
         </div>
     </div>
 </div>

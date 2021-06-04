@@ -53,3 +53,21 @@ function deleteOne(int $id)
         die();
     }
 }
+
+function updateOne(array $post)
+{
+    include('connexion.php');
+
+    try {
+        $dbh = getConnexion();
+        $query = $dbh->prepare("UPDATE message SET content=:message WHERE id=:id ");
+        $query->bindParam(':id', $post['id']);
+        $query->bindParam(':message', $post['message']);
+        $query->execute();
+        $query->closeCursor();
+        $db = null;
+    } catch (PDOException $e) {
+        print "Erreur lors de l'insertion d'un message'!: " . $e->getMessage() . "<br />";
+        die();
+    }
+}
