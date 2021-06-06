@@ -17,7 +17,6 @@
                     </thead>
                     <tbody>
                         <?php
-                        $messages = findAll();
                         foreach ($messages as $message) {
                         ?>
                             <input type="hidden" name="pseudo" value=<?= $message['pseudo'] ?> />
@@ -30,14 +29,14 @@
                                 <td class="col-2"><?= htmlentities($message['pseudo']) ?></td>
                                 <td class="col-8">
                                     <div>
-                                        <?php if (isset($_GET) && $_GET['m'] == $message['id']) { ?>
+                                        <?php if (isset($_GET['m']) && $_GET['m'] == $message['id']) { ?>
                                             <textarea rows="3" class="form-control" name="message"><?= htmlspecialchars($message['content']) ?></textarea>
                                         <?php    } else {
                                             echo nl2br(htmlentities($message['content']));
                                         } ?>
                                     </div>
                                     <div class="text-right">
-                                        <?php if (isset($_GET) && $_GET['m'] == $message['id']) { ?>
+                                        <?php if (isset($_GET['m']) && $_GET['m'] == $message['id']) { ?>
                                             <a class="custom-link" href=<?= $_SERVER["HTTP_REFERER"] ?>><small>Annuler</small></a>&nbsp;-&nbsp;
                                             <a class="custom-link" href="#" onclick="document.forms['update_mess'].submit();"><small>Remplacer le message</small></a>
                                         <?php    } else { ?>

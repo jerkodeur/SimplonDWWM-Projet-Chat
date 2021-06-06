@@ -1,20 +1,16 @@
 <?php
-$form_error = [];
 
-if (isset($_POST['update'])) {
-    if ($_POST['message'] === '') $form_error['general'] = 'empty';
-} else {
-    if ($_POST['pseudo'] === '') $form_error['pseudo'] = 'empty';
+function checkform(array $post)
+{
+    $form_error = [];
 
-    if ($_POST['message'] === '') $form_error['message'] = 'empty';
-}
-
-if ($form_error === []) {
-    if (isset($_POST['update'])) {
-        updateOne($_POST);
+    if (isset($post['update'])) {
+        if ($post['message'] === '') $form_error['general'] = 'empty';
     } else {
-        newMessage($_POST);
+        if ($post['pseudo'] === '') $form_error['pseudo'] = 'empty';
+
+        if ($post['message'] === '') $form_error['message'] = 'empty';
     }
-    $_POST = [];
-    header('Location: index.php#bottom');
+
+    return $form_error;
 }
