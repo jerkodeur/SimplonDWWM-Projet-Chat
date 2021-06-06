@@ -23,6 +23,7 @@ Création d'un chat dans le cadre de ma formation à Simplon.co
 ### Pour lancer le projet
 
 - Cloner le projet
+- Importer la base de donnée sur mysql
 - Démarrer le serveur
 - Ouvrir index.php en localhost sur une page de votre navigateur
 
